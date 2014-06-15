@@ -1,0 +1,16 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Note Share", root_path, id: "logo" %>
+      <nav>
+	    <ul class="nav ">
+          <li>search input</li>
+        </ul>
+        <ul class="nav pull-right">
+          <li><%if user_signed_in? %><%= link_to current_user.name, current_user %><%else%><%= link_to "Sign in", '/users/sign_in' %><%end%></li>
+		  <li><%if user_signed_in? %><%=link_to('Logout', destroy_user_session_path, :method => :delete)%><%end%></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
