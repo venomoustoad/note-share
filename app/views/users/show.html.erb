@@ -4,7 +4,7 @@
 <p>Email: <%= @user.email %></p>
 
 <h2>Upload history</h2>
-<% @notes = Note.all.paginate(page: params[:page], per_page: 10) %>
+<% @notes = current_user.notes.paginate(page: params[:page], per_page: 10) %>
 	<%= will_paginate @notes%>
 	
 	<%@notes.each do |note|%>
