@@ -4,9 +4,17 @@
       <%= link_to "Note Share", root_path, id: "logo" %>
       <nav>
 	    <ul class="nav ">
-          <li>search input</li>
+		
+          <li>	<div class="input-append" style = "margin-top:5px;margin-left:20px;"><%= form_for(Note.new, :method => :get) do |f| %>
+			<input type="text" name="note" placeholder = "Search for a note" >
+				<%= button_tag(:name => 'submit', class: "btn btn-success") do %>
+					<i class='icon-search'></i>
+				<%end%>
+			<%end%></div>
+			</li>
         </ul>
         <ul class="nav pull-right">
+		  <li><%if user_signed_in? %><%= link_to "Upload Note", new_note_path %><%end%></li>
           <li><%if user_signed_in? %><%= link_to current_user.name, current_user %><%else%><%= link_to "Sign in", '/users/sign_in' %><%end%></li>
 		  <li><%if user_signed_in? %><%=link_to('Logout', destroy_user_session_path, :method => :delete)%><%end%></li>
         </ul>

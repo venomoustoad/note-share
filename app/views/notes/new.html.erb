@@ -1,0 +1,133 @@
+<h2>Upload note</h2>
+
+<%= form_for(Note.new, :html => {name:"uploadform", id: "uploadform", onsubmit: "return(validate());"}) do |f| %>
+
+
+		<fieldset>
+		
+		<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+		
+		<div>
+			<label for="fileselect">Files to upload:</label>
+			<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+			<div id="filedrag">or drop files here</div>
+		</div>
+		
+		<div id="submitbutton">
+			<button type="submit">Upload Files</button>
+		</div>
+		
+		</fieldset>
+		
+		
+		
+		<div id="messages">
+		<p>Status Messages</p>
+		<br />
+		<input type="reset" name="reset" value="Reset" onclick="javascript:location.reload(true)" >
+		<input type="button" name="upload" value="Upload" >
+		</div>
+		<script src="filedrag.js"></script>
+		    <div id="details">
+		        Name: <input type="text" name="name" value=""> <br/>
+		        Description: <input type="text" name="description" value="" size="150"><br/>
+		        Tags: <input type="text" name="tags" value="" size="100"><br/>
+		       
+		        
+		      
+		        Board: <select name="category_board" >
+		
+		                <option value=""></option>
+		                <option value="ICSE">ICSE</option>
+		                <option value="CBSE">CBSE</option>
+		                <option value="IGCSE">IGCSE</option>
+		                <option value="Mah">Maharashtra Board</option>
+		                <option value="Kar">Karnataka Board</option>
+		                <option value="Ker">Kerala Board</option>
+		                <option value="Guj">Gujarat Board</option>
+		                </select>
+		       
+		
+		        Grade: <select name="category_grade">
+		                <option value=""></option>
+		                <option value="twelve">12</option>
+		                <option value="eleven">11</option>
+		                <option value="ten">10</option>
+		                <option value="nine">9</option>
+		                <option value="eight">8</option>
+		                <option value="seven">7</option>
+		                <option value="six">6</option>
+		                <option value="five">5</option>
+		                </select>
+		
+		        Subject: <select name="category_subject">
+		                <option value=""></option>
+		                <option value="Maths">Maths</option>
+		                <option value="Physics">Physics</option>
+		                <option value="Chemistry">Chemistry</option>
+		                <option value="Biology">Biology</option>
+		                </select>
+		       <br/>
+		
+		        <input type="reset" name="reset" value="Reset" onclick="form.reset()">
+		        <!input type="submit" name="submit" value="Upload">
+		
+		    </div>
+			  <div><%= f.submit "Save" %></div>
+
+	<% end %>
+
+<script type="text/javascript">
+<!--
+// Form validation code will come here.
+function validate()
+{
+
+
+   if( document.uploadform.name.value == "" )
+   {
+     alert( "Please provide your name!" );
+     document.uploadform.name.focus() ;
+     return false;
+   }
+
+   if( document.uploadform.desc.value == "" )
+   {
+     alert( "Please provide Description of the file!" );
+     document.uploadform.desc.focus() ;
+     return false;
+   }
+
+   if( document.uploadform.tags.value == "" )
+   {
+     alert( "Please provide atleast one Tag" );
+     document.uploadform.tags.focus() ;
+     return false;
+   }
+
+    if( document.uploadform.board.value == "" )
+   {
+     alert( "Please provide board" );
+     document.uploadform.board.focus() ;
+     return false;
+   }
+
+   if( document.uploadform.grade.value == "" )
+   {
+     alert( "Please provide grade" );
+     document.uploadform.grade.focus() ;
+     return false;
+   }
+
+   if( document.uploadform.subject.value == "" )
+   {
+     alert( "Please provide subject" );
+     document.uploadform.subject.focus() ;
+     return false;
+   }
+
+
+   return( true );
+}
+//-->
+</script>
