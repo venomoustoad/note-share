@@ -1,28 +1,17 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The purpose of the note-share app is to help students share notes with each other for the purpose of studies.
 
-Things you may want to cover:
+The app is similar to youtube, but for notes, pdf and image formats. 
 
-* Ruby version
+Currently, it is at prototyping stage.
+The app is live on noteshareapp.herokuapp.com 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Next steps:
+Tags to be added
+Comments and rating to be added
+Search functionality to be corrected
+Advanced search to be added
+Facebook login to be added
+Styling for pages to be improved
+Landing page to be designed
