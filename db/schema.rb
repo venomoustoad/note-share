@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615073136) do
+ActiveRecord::Schema.define(version: 20140616055849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 20140615073136) do
     t.string   "category_board"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "source_file_name"
+    t.string   "source_content_type"
+    t.integer  "source_file_size"
+    t.datetime "source_updated_at"
   end
 
   add_index "notes", ["user_id", "created_at"], name: "index_notes_on_user_id_and_created_at", using: :btree

@@ -1,17 +1,32 @@
 <h2>Upload note</h2>
+<%if !@note.nil? %>
+<% if @note.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@note.errors.count, "error") %> prohibited this post from being saved:</h2>
+ 
+    <ul>
+    <% @note.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% end %>
 
 <%= form_for(Note.new, :html => {name:"uploadform", id: "uploadform", onsubmit: "return(validate());"}) do |f| %>
 
 
 		<fieldset>
 		
-		<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
-		
+		<!input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+		<!--
 		<div>
 			<label for="fileselect">Files to upload:</label>
 			<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
 			<!div id="filedrag"or drop files here /div>
 		</div>
+		-->
+		<%= f.file_field :source %>
 		
 		</fieldset>
 		
@@ -21,13 +36,14 @@
 		</div>
 		<script src="/javascripts/filedrag.js"></script>
 		    <div id="details">
-		        Name: <input type="text" name="name" value=""> <br/>
-		        Description: <input type="text" name="description" value="" size="150"><br/>
-		        Tags: <input type="text" name="tags" value="" size="100"><br/>
-		       
+		        Name: <input type="text" name="note[name]" value=""> <br/>
+		        Description: <input type="text" name="note[description]" value="" size="150"><br/>
+		        Tags: <input type="text" name="note[tags]" value="" size="100"><br/>
+		        <input type="hidden" name="note[user_id]" value="<%=current_user.id%>">
+		
 		        
 		      
-		        Board: <select name="category_board" >
+		        Board: <select name="note[category_board]" >
 		
 		                <option value=""></option>
 		                <option value="ICSE">ICSE</option>
@@ -40,7 +56,7 @@
 		                </select>
 		       
 		
-		        Grade: <select name="category_grade">
+		        Grade: <select name="note[category_grade]">
 		                <option value=""></option>
 		                <option value="twelve">12</option>
 		                <option value="eleven">11</option>
@@ -52,7 +68,7 @@
 		                <option value="five">5</option>
 		                </select>
 		
-		        Subject: <select name="category_subject">
+		        Subject: <select name="note[category_subject]">
 		                <option value=""></option>
 		                <option value="Maths">Maths</option>
 		                <option value="Physics">Physics</option>

@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby '1.9.3'
 #ruby-gemset=railstutorial_rails_4_0
 
@@ -9,6 +9,8 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'pg', '0.15.1'
 gem 'devise'
 gem 'omniauth-facebook'
+#gem 'rmagick'
+gem "paperclip"
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
