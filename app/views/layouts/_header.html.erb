@@ -5,7 +5,7 @@
       <nav>
 	    <ul class="nav ">
 		
-          <li>	<div class="input-append" style = "margin-top:5px;margin-left:20px;"><%= form_for(Note.new, :method => :get) do |f| %>
+          <li>	<div class="input-append" style = "margin-top:5px;margin-left:20px;"><%= form_for(Note.new, :method => :get, :html => {style: "margin-bottom:0px;"}) do |f| %>
 			<input type="text" name="note" placeholder = "Search for a note" >
 				<%= button_tag(:name => 'submit', class: "btn btn-success") do %>
 					<i class='icon-search'></i>
