@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   validates :password, length: { minimum: 6 }
   has_many :notes
+  validates_presence_of :invitation_id, :message => 'is required'
+  validates_uniqueness_of :invitation_id
+  has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
+  belongs_to :invitation
+  before_create :set_invitation_limit
   
   def self.find_for_facebook_oauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -27,5 +32,18 @@ class User < ActiveRecord::Base
           user.email = data["email"] if user.email.blank?
         end
       end
+    end
+    
+    def invitation_token
+      invitation.token if invitation
+    end
+
+    def invitation_token=(token)
+      self.invitation = Invitation.find_by_token(token)
+    end
+    private
+
+    def set_invitation_limit
+      self.invitation_limit = 5
     end
 end

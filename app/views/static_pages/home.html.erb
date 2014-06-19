@@ -9,6 +9,11 @@
  <h3>
     Note share helps in building a sharing framework for notes for school and college students. 
   </h3>
-
+	<%if user_signed_in? %>
+	<%if current_user.invitation_limit>0 %>
+		<%= link_to 'Send invitation', new_invitation_path%>
+		<%= current_user.invitation_limit%> invitations left
+	<%end%>
+	<%end%>
   <%#= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 </div>
