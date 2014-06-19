@@ -3,13 +3,13 @@
 	
 	<%@notes.each do |note|%>
 		<a href = '/notes/<%=note.id%>'>
-		<div class = "row-fluid" style= "border:1px solid black">
+		<div class = "row-fluid" style= "border:1px solid black; padding:5px;">
 			<div class = "span5">
 				<div class = "row-fluid">
-					Title: <%= note.name%>
+					<h4> <span class="label label-default">Title</span><%= note.name%></h4> 
 				</div>
 				<div class = "row-fluid">
-					Author: <%= User.find(note.user_id).name%>
+					<h6> <span class="label label-default">Author</span><%= User.find(note.user_id).name%></h6>
 				</div>
 				<div class = "row-fluid">
 					Description: <%= note.description%>
