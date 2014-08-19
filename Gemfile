@@ -11,6 +11,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 #gem 'rmagick'
 gem "paperclip"
+gem "twitter"
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

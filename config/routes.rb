@@ -1,8 +1,6 @@
 Noteshare::Application.routes.draw do 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  #devise_for :users, :controllers => { :registrations => 'users/registrations' }, :action => 'new' do
   devise_scope :user do get '/users/sign_up/:invitation_token' => 'users/registrations#new' end
-   # end
   devise_scope :user do get "/sign_out" => 'devise/sessions#destroy' end
   get "users/new"
   resources :users
@@ -13,8 +11,6 @@ Noteshare::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/privacy_policy', to: 'static_pages#privacy_policy', via: 'get'
-  #match '/signup/:invitation_token', to: 'users#new', via: 'get'
-  #match '/sign_out', to: 'devise/sessions#destroy', via: 'get'
   #devise_scope :user do
   #  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   #end
